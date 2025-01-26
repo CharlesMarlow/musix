@@ -1,5 +1,7 @@
+'use client';
+
 import Image from 'next/image';
-import { LogOut, Menu } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -7,6 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import SettingsMenu from './settings/SettingsMenu';
 
 const Header = () => {
   const links = [
@@ -44,12 +47,7 @@ const Header = () => {
                 {link.name}
               </a>
             ))}
-            <Button
-              variant='ghost'
-              className='text-gray-600 hover:text-gray-800'
-            >
-              Logout
-            </Button>
+            <SettingsMenu />
           </nav>
           {/* Mobile Hamburger Menu */}
           <div className='md:hidden'>
