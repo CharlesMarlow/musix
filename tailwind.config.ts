@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Config } from 'tailwindcss';
 import colors from 'tailwindcss/colors';
 import { createThemes } from 'tw-colors';
+const { lightTheme, darkTheme } = require('./src/components/theme/themes');
 
 const baseColors = [
   'gray',
@@ -40,28 +42,28 @@ const generateThemeObject = (colors: any, mapping: any, invert = false) => {
   return theme;
 };
 
-const lightTheme = generateThemeObject(colors, shadeMapping);
-const darkTheme = generateThemeObject(colors, shadeMapping, true);
+const colorLightTheme = generateThemeObject(colors, shadeMapping);
+const colorDarkTheme = generateThemeObject(colors, shadeMapping, true);
 
 const themes = {
   light: {
+    ...colorLightTheme,
     ...lightTheme,
-    white: '#ffffff',
   },
   dark: {
+    ...colorDarkTheme,
     ...darkTheme,
-    white: colors.gray['950'],
-    black: colors.gray['50'],
   },
 };
 
 export default {
-  darkMode: ['class'],
+  darkMode: 'class',
   content: [
     './src/**/*.{js,ts,jsx,tsx,mdx}',
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    '.src/components/theme/**/*.{js,ts}',
   ],
   theme: {
     extend: {

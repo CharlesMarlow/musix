@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import SettingsMenu from './settings/SettingsMenu';
+import ThemeSwitch from './theme/ThemeSwitcher';
 
 const Header = () => {
   const links = [
@@ -19,8 +20,8 @@ const Header = () => {
   ];
 
   return (
-    <header className='bg-white shadow-md fixed w-full z-50'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <header className='bg-headerBg border-b-1 shadow-md fixed w-full z-50'>
+      <div className='max-w-7xl mx-auto sm:px-6 lg:px-2'>
         <div className='flex justify-between items-center h-14'>
           {' '}
           <div className='flex items-center'>
@@ -30,9 +31,9 @@ const Header = () => {
               width={70}
               height={70}
               priority
-              className='m-0 p-0 object-contain items-center'
+              className='object-contain items-center'
             />
-            <span className='text-2xl font-semibold text-gray-800 items-center'>
+            <span className='text-2xl font-semibold ml-4 items-center'>
               Musix
             </span>{' '}
           </div>
@@ -42,11 +43,12 @@ const Header = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className='text-gray-600 hover:text-gray-800'
+                className='text-zinc-900 hover:text-zinc-50'
               >
                 {link.name}
               </a>
             ))}
+            <ThemeSwitch  />
             <SettingsMenu />
           </nav>
           {/* Mobile Hamburger Menu */}
