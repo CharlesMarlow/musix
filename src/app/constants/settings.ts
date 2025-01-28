@@ -1,4 +1,4 @@
-import { LucideIcon, User, Cog, LogOut, Languages } from 'lucide-react';
+import { LucideIcon, User, Cog, LogOut, Languages, Boxes } from 'lucide-react';
 
 export type SettingsMenuItem = {
   id: string;
@@ -10,6 +10,7 @@ export type SettingsMenuItem = {
 export const SETTINGS_MENU_ITEMS: SettingsMenuItem[] = [
   { id: 'profile', label: 'Profile', icon: User, href: '/profile' },
   { id: 'account', label: 'Account', icon: Cog, href: '/account' },
-  { id: 'theme', label: 'Theme', icon: Languages },
+  { id: 'groups', label: 'Groups', icon: Languages },
+  { id: 'collaborations', label: 'Collabs', icon: Boxes },
   { id: 'logout', label: 'Log out', icon: LogOut },
 ];

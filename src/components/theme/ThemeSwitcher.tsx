@@ -23,11 +23,23 @@ const ThemeSwitch = () => {
     );
 
   if (resolvedTheme === 'dark') {
-    return <Sun onClick={() => setTheme('light')} className='cursor-pointer' />;
+    return (
+      <Sun
+        onClick={() => setTheme('light')}
+        className='hoverEffect cursor-pointer'
+        size={40}
+      />
+    );
   }
 
   if (resolvedTheme === 'light') {
-    return <Moon onClick={() => setTheme('dark')} className='cursor-pointer' />;
+    return (
+      <Moon
+        onClick={() => setTheme('dark')}
+        className='hoverEffect cursor-pointer'
+        size={40}
+      />
+    );
   }
 };
 

@@ -9,16 +9,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import SettingsMenu from './settings/SettingsMenu';
-import ThemeSwitch from './theme/ThemeSwitcher';
+import SettingsMenu from '../settings/SettingsMenu';
+import ThemeSwitch from '../theme/ThemeSwitcher';
+import { navLinks } from './navLinks';
+import React from 'react';
 
-const Header = () => {
-  const links = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
-  ];
-
+const Navbar = () => {
   return (
     <header className='bg-headerBg border-b-1 shadow-md fixed w-full z-50'>
       <div className='max-w-7xl mx-auto sm:px-6 lg:px-2'>
@@ -38,17 +34,19 @@ const Header = () => {
             </span>{' '}
           </div>
           {/* Desktop Links */}
-          <nav className='hidden md:flex space-x-6 items-center'>
-            {links.map((link) => (
+          <nav className='hidden md:flex space-x-10 items-center mx-auto'>
+            {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className='text-zinc-900 hover:text-zinc-50'
+                className='text-zinc-900 hoverEffect'
               >
-                {link.name}
+                {link.icon && React.createElement(link.icon, { size: 24 })}
               </a>
             ))}
-            <ThemeSwitch  />
+          </nav>
+          <nav className='hidden md:flex items-center ml-8 space-x-4'>
+            <ThemeSwitch />
             <SettingsMenu />
           </nav>
           {/* Mobile Hamburger Menu */}
@@ -60,7 +58,7 @@ const Header = () => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className='w-56'>
-                {links.map((link) => (
+                {navLinks.map((link) => (
                   <DropdownMenuItem key={link.name}>
                     <a href={link.href} className='w-full'>
                       {link.name}
@@ -81,4 +79,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Navbar;

@@ -7,6 +7,13 @@ body {
   margin: 0px 0px;
 }
 
+:root {
+  --radius: 4px;
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -46,4 +53,24 @@ body {
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #7878a3;
+}
+
+@layer utilities {
+  .rounded-lg {
+    border-radius: var(--radius-lg);
+  }
+  .rounded-md {
+    border-radius: var(--radius-md);
+  }
+  .rounded-sm {
+    border-radius: var(--radius-sm);
+  }
+
+  .hoverEffect {
+    @apply cursor-pointer text-zinc-900 transition-all duration-300 p-2 rounded-[var(--radius)] flex items-center justify-center;
+  }
+
+  .hoverEffect:hover {
+    @apply text-brandGold bg-zinc-900 transform scale-110;
+  }
 }
