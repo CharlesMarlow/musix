@@ -4,6 +4,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from '@/components/ui/dropdown-menu';
+import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs/components';
 import { SETTINGS_MENU_ITEMS } from '../../app/constants/settings';
 import { useRouter } from 'next/navigation';
 import { Settings } from 'lucide-react';
@@ -11,19 +12,9 @@ import { Settings } from 'lucide-react';
 const SettingsMenu = () => {
   const router = useRouter();
 
-  const handleSignOut = async () => {
-    try {
-      console.log('Signing out...');
-      router.push('/login');
-    } catch (error) {
-      console.error('Failed to sign out', error);
-    }
-  };
-
   const menuActions: Record<string, () => void> = {
     profile: () => router.push('/profile'),
     account: () => router.push('/account'),
-    signout: handleSignOut,
   };
 
   return (
@@ -38,11 +29,16 @@ const SettingsMenu = () => {
         {SETTINGS_MENU_ITEMS.map(({ id, label, icon: Icon, href }) => (
           <DropdownMenuItem
             key={id}
-            onClick={menuActions[id]}
+            onClick={id !== 'logout' ? menuActions[id] : undefined}
             asChild={!!href}
             className='flex items-center gap-2 px-4 py-2 rounded-md text-zinc-900 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-100 dark:hover:text-white cursor-pointer'
           >
-            {href ? (
+            {id === 'logout' ? (
+              <LogoutLink className='flex items-center gap-2 w-full'>
+                {Icon && <Icon className='h-4 w-4' />}
+                {label}
+              </LogoutLink>
+            ) : href ? (
               <a href={href} className='flex items-center gap-2'>
                 {Icon && <Icon className='h-4 w-4' />}
                 {label}
