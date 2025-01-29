@@ -1,18 +1,11 @@
 'use client';
 
+import React from 'react';
 import Image from 'next/image';
-import { Menu } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 import SettingsMenu from '../settings/SettingsMenu';
 import ThemeSwitch from '../theme/ThemeSwitcher';
 import { navLinks } from './navLinks';
-import React from 'react';
+import MobileNav from './MobileNav';
 
 const Navbar = () => {
   return (
@@ -33,7 +26,6 @@ const Navbar = () => {
               Musix
             </span>{' '}
           </div>
-          {/* Desktop Links */}
           <nav className='hidden md:flex space-x-10 items-center mx-auto'>
             {navLinks.map((link) => (
               <a
@@ -49,30 +41,7 @@ const Navbar = () => {
             <ThemeSwitch />
             <SettingsMenu />
           </nav>
-          {/* Mobile Hamburger Menu */}
-          <div className='md:hidden'>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant='ghost'>
-                  <Menu size={24} />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className='w-56'>
-                {navLinks.map((link) => (
-                  <DropdownMenuItem key={link.name}>
-                    <a href={link.href} className='w-full'>
-                      {link.name}
-                    </a>
-                  </DropdownMenuItem>
-                ))}
-                <DropdownMenuItem>
-                  <Button variant='ghost' className='w-full text-left'>
-                    Logout
-                  </Button>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
+          <MobileNav />
         </div>
       </div>
     </header>
