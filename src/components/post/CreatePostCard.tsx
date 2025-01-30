@@ -3,57 +3,50 @@ import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { Guitar } from 'lucide-react';
+import { Guitar, Sparkles, Smile, MapPin, ImageIcon } from 'lucide-react';
 
 const CreatePostCard = () => {
   return (
     <Card className='w-[32rem]'>
       <CardHeader>
-        <CardTitle className='text-white flex items-center gap-2'>
-          Light the world with some music <Guitar size={24} />
+        <CardTitle className='text-white flex items-center justify-center gap-2'>
+          {' '}
+          <Guitar />
+          <h3 className='text-[1.4rem]'>Light the world with some music!</h3>
+          <Sparkles />
         </CardTitle>
       </CardHeader>
       <CardContent>
         <form>
           <div className='grid w-full items-center gap-4'>
-            <div className='flex flex-col space-y-1.5 '>
-              <Input id='name' placeholder="Don't be shy now!" />
-            </div>
             <div className='flex flex-col space-y-1.5'>
-              <Label htmlFor='framework'>Framework</Label>
-              <Select>
-                <SelectTrigger id='addon'>
-                  <SelectValue placeholder='Add some flair' className='text-white' />
-                </SelectTrigger>
-                <SelectContent position='popper'>
-                  <SelectItem value='media'>Photo/Video</SelectItem>
-                  <SelectItem value='emotion'>Emotion</SelectItem>
-                  <SelectItem value='location'>Check-in</SelectItem>
-                  <SelectItem value='gif'>GIF</SelectItem>
-                </SelectContent>
-              </Select>
+              <Input
+                id='create-post'
+                placeholder="Don't be shy, yeah?"
+                className='rounded-2xl'
+              />
+            </div>
+            <div className='flex justify-between gap-2'>
+              <Button className='flex-1 flex items-center gap-x-2 bg-brandGold text-white'>
+                <ImageIcon className='w-4 h-4' /> Photo/Video
+              </Button>
+              <Button className='flex-1 flex items-center gap-x-2 bg-brandScarlet text-white '>
+                <Smile className='w-4 h-4' /> Emotion
+              </Button>
+              <Button className='flex-1 flex items-center gap-x-2 bg-brandGold text-white '>
+                <MapPin className='w-4 h-4' /> Check-in
+              </Button>
+              <Button className='flex-1 flex items-center gap-x-2 bg-brandScarlet text-white '>
+                <ImageIcon className='w-4 h-4' /> GIF
+              </Button>
             </div>
           </div>
         </form>
       </CardContent>
-      <CardFooter className='flex justify-between'>
-        <Button variant='outline'>Cancel</Button>
-        <Button>Create!</Button>
-      </CardFooter>
     </Card>
   );
 };

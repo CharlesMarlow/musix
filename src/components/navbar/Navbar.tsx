@@ -9,7 +9,7 @@ import MobileNav from './MobileNav';
 
 const Navbar = () => {
   return (
-    <header className='bg-headerBg border-b-1 shadow-md fixed w-full z-50'>
+    <header className='bg-headerBg border-b-1 shadow-md fixed w-full z-50 bg-gradient-to-r from-brandGold to-brandScarlet'>
       <div className='max-w-7xl mx-auto sm:px-6 lg:px-2'>
         <div className='flex justify-between items-center h-14'>
           {' '}

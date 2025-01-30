@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Sun, Moon } from 'lucide-react';
 
 const ThemeSwitch = () => {
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState<boolean>(false);
   const { setTheme, resolvedTheme } = useTheme();
 
   useEffect(() => setMounted(true), []);
