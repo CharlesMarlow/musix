@@ -4,10 +4,18 @@ import React from 'react';
 import Image from 'next/image';
 import SettingsMenu from '../settings/SettingsMenu';
 import ThemeSwitch from '../theme/ThemeSwitcher';
-import { navLinks } from './navLinks';
+import { navLinks as navLinksStructure } from './navLinks';
 import MobileNav from './MobileNav';
+import { useTranslations } from 'next-intl';
 
 const Navbar = () => {
+  const tCommon = useTranslations('common');
+  const tNavbar = useTranslations('navbar');
+  const translatedNavLinks = navLinksStructure.map((link) => ({
+    ...link,
+    name: tNavbar(`links.${link.name}`), 
+  }));
+
   return (
     <header className='bg-headerBg border-b-1 shadow-md fixed w-full z-50 bg-gradient-to-r from-brandGold to-brandScarlet'>
       <div className='max-w-7xl mx-auto sm:px-6 lg:px-2'>
@@ -23,11 +31,11 @@ const Navbar = () => {
               className='object-contain items-center'
             />
             <span className='text-2xl font-semibold ml-4 items-center'>
-              Musix
+              {tCommon('appName')}
             </span>{' '}
           </div>
           <nav className='hidden md:flex space-x-10 items-center mx-auto'>
-            {navLinks.map((link) => (
+            {translatedNavLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}

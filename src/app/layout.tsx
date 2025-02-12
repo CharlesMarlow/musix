@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { Providers } from '../../providers';
 import Header from '@/components/navbar/Navbar';
@@ -19,20 +21,25 @@ export const metadata: Metadata = {
   description: 'The music-fused social network platform.',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
-    <html lang='en' suppressHydrationWarning className='dark'>
+    <html lang={locale} suppressHydrationWarning className='dark'>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Providers>
-          <Header />
-          <main className='bg-sectionBg'>{children}</main>
-        </Providers>
+        <NextIntlClientProvider messages={messages}>
+          <Providers>
+            <Header />
+            <main className='bg-sectionBg'>{children}</main>
+          </Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

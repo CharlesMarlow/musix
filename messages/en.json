@@ -1,0 +1,13 @@
+{
+  "common": {
+    "appName": "Musix"
+  },
+  "navbar": {
+    "links": {
+      "home": "Home",
+      "friends": "friends",
+      "notifications": "Notifications",
+      "messages": "Messages"
+    }
+  }
+}

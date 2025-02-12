@@ -8,8 +8,8 @@ export type NavLink = {
 };
 
 export const navLinks: NavLink[] = [
-  { name: 'Home', href: '/', icon: Home },
-  { name: 'Friends', href: '/friends', icon: Users },
-  { name: 'Notifications', href: '/notifications', icon: Bell },
-  { name: 'Messages', href: '/messages', icon: MessagesSquare },
+  { name: 'home', href: '/', icon: Home },
+  { name: 'friends', href: '/friends', icon: Users },
+  { name: 'notifications', href: '/notifications', icon: Bell },
+  { name: 'messages', href: '/messages', icon: MessagesSquare },
 ];
