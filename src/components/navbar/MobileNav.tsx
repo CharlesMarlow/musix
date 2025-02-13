@@ -16,8 +16,8 @@ import SettingsMenu from '../settings/SettingsMenu';
 import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs';
 
 const MobileNav = () => {
-    const { isAuthenticated } = useKindeBrowserClient();
-    const isLoggedIn = isAuthenticated;
+  const { isAuthenticated } = useKindeBrowserClient();
+  const isLoggedIn = isAuthenticated;
   const tCommon = useTranslations('common');
   const tNavbar = useTranslations('navbar');
   const translatedNavLinks = navLinks.map((link) => ({
@@ -33,9 +33,7 @@ const MobileNav = () => {
             <Menu size={24} />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent
-          className='w-56 rounded-lg border border-zinc-200 shadow-lg'
-        >
+        <DropdownMenuContent className='w-56 rounded-lg border border-zinc-200 shadow-lg'>
           {translatedNavLinks.map((link) => (
             <DropdownMenuItem
               key={link.name}
@@ -53,9 +51,11 @@ const MobileNav = () => {
             <SettingsMenu />
           </DropdownMenuItem>
           <DropdownMenuItem>
-            {isLoggedIn && <LogoutLink className='w-full text-left'>
-              {tCommon('logout')}
-            </LogoutLink>}
+            {isLoggedIn && (
+              <LogoutLink className='w-full text-left'>
+                {tCommon('logout')}
+              </LogoutLink>
+            )}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

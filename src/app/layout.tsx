@@ -4,6 +4,7 @@ import { getLocale, getMessages } from 'next-intl/server';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { Providers } from '../../providers';
 import Header from '@/components/navbar/Navbar';
+import { QueryProvider } from './providers/queryProvider';
 import './globals.css';
 
 const geistSans = Geist({
@@ -36,8 +37,10 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider messages={messages}>
           <Providers>
-            <Header />
-            <main className='bg-sectionBg'>{children}</main>
+            <QueryProvider>
+              <Header />
+              <main className='bg-sectionBg'>{children}</main>
+            </QueryProvider>
           </Providers>
         </NextIntlClientProvider>
       </body>
