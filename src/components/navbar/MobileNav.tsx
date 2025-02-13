@@ -1,6 +1,7 @@
 'use client';
 
 import { Menu } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -14,36 +15,44 @@ import ThemeSwitch from '../theme/ThemeSwitcher';
 import SettingsMenu from '../settings/SettingsMenu';
 
 const MobileNav = () => {
+  const tCommon = useTranslations('common');
+  const tNavbar = useTranslations('navbar');
+  const translatedNavLinks = navLinks.map((link) => ({
+    ...link,
+    name: tNavbar(`links.${link.name}`),
+  }));
+
   return (
-    <div className='md:hidden'>
+    <div className='md:hidden bg-white'>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant='ghost'>
+          <Button>
             <Menu size={24} />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
-          className='w-56 rounded-lg border border-zinc-200 dark:border-zinc-700 
-                     bg-white text-black dark:bg-zinc-900 dark:text-white shadow-lg'
+          className='w-56 rounded-lg border border-zinc-200 shadow-lg'
         >
-          {navLinks.map((link) => (
+          {translatedNavLinks.map((link) => (
             <DropdownMenuItem
               key={link.name}
-              className='hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors'
+              className='hover:bg-zinc-100 transition-colors'
             >
               <a href={link.href} className='w-full block'>
                 {link.name}
               </a>
             </DropdownMenuItem>
           ))}
-          <DropdownMenuItem className='hover:bg-zinc-100 dark:hover:bg-zinc-700'>
+          <DropdownMenuItem className='hover:bg-zinc-100'>
             <ThemeSwitch />
           </DropdownMenuItem>
-          <DropdownMenuItem className='hover:bg-zinc-100 dark:hover:bg-zinc-700'>
+          <DropdownMenuItem className='hover:bg-zinc-100'>
             <SettingsMenu />
           </DropdownMenuItem>
-          <DropdownMenuItem className='hover:bg-red-100 dark:hover:bg-red-700 text-red-600 dark:text-red-400'>
-            <LogoutLink className='w-full text-left'>Logout</LogoutLink>
+          <DropdownMenuItem>
+            <LogoutLink className='w-full text-left'>
+              {tCommon('logout')}
+            </LogoutLink>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

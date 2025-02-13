@@ -1,6 +1,8 @@
 {
   "common": {
-    "appName": "Musix"
+    "appName": "Musix",
+    "logout": "Logout",
+    "loading": "Loading..."
   },
   "navbar": {
     "links": {
@@ -8,6 +10,35 @@
       "friends": "friends",
       "notifications": "Notifications",
       "messages": "Messages"
+    }
+  },
+  "createPost": {
+    "title": "Light the world with some music!",
+    "inputPlaceholder": "Don't be shy, yeah?",
+    "addons": {
+      "media": "Photo/Video",
+      "emotion": "Emotion",
+      "checkIn": "Check-in",
+      "gif": "GIF"
+    }
+  },
+  "form": {
+    "register": {
+      "title": "Please enter your details",
+      "signIn": "Sign In",
+      "signUp": "Sign Up",
+      "noAccount": "Don't have an account?",
+      "haveAccount": "Already have an account?",
+      "firstName": "First Name",
+      "firstNameplaceholder": "Enter your first name",
+      "lastName": "Last Name",
+      "lastNameplaceholder": "Enter your last name",
+      "dateOfBirth": "Date of Birth",
+      "dateOfBirthPlaceholder": "YYYY-MM-DD",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "password": "Password",
+      "passwordPlaceholder": "Enter your password"
     }
   }
 }

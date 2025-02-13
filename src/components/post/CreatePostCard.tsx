@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -10,13 +12,14 @@ import { Input } from '@/components/ui/input';
 import { Guitar, Sparkles, Smile, MapPin, ImageIcon } from 'lucide-react';
 
 const CreatePostCard = () => {
+  const t = useTranslations('createPost');
   return (
     <Card className='w-[32rem]'>
       <CardHeader>
         <CardTitle className='text-white flex items-center justify-center gap-2'>
           {' '}
           <Guitar />
-          <h3 className='text-[1.4rem]'>Light the world with some music!</h3>
+          <h3 className='text-[1.4rem]'>{t('title')}</h3>
           <Sparkles />
         </CardTitle>
       </CardHeader>
@@ -26,22 +29,22 @@ const CreatePostCard = () => {
             <div className='flex flex-col space-y-1.5'>
               <Input
                 id='create-post'
-                placeholder="Don't be shy, yeah?"
+                placeholder={t('inputPlaceholder')}
                 className='rounded-2xl'
               />
             </div>
             <div className='flex justify-between gap-2'>
               <Button className='flex-1 flex items-center gap-x-2 bg-brandGold text-white'>
-                <ImageIcon className='w-4 h-4' /> Photo/Video
+                <ImageIcon className='w-4 h-4' /> {t('addons.media')}
               </Button>
               <Button className='flex-1 flex items-center gap-x-2 bg-brandScarlet text-white '>
-                <Smile className='w-4 h-4' /> Emotion
+                <Smile className='w-4 h-4' /> {t('addons.emotion')}
               </Button>
               <Button className='flex-1 flex items-center gap-x-2 bg-brandGold text-white '>
-                <MapPin className='w-4 h-4' /> Check-in
+                <MapPin className='w-4 h-4' /> {t('addons.checkIn')}
               </Button>
               <Button className='flex-1 flex items-center gap-x-2 bg-brandScarlet text-white '>
-                <ImageIcon className='w-4 h-4' /> GIF
+                <ImageIcon className='w-4 h-4' /> {t('addons.gif')}
               </Button>
             </div>
           </div>

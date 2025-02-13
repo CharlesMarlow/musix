@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -15,6 +16,8 @@ import { authFormSchema } from '@/lib/utils';
 // import { signUp, signIn } from '@/lib/actions/user.actions';
 
 const AuthForm = ({ type }: { type: string }) => {
+  const tCommon = useTranslations('common');
+  const tForm = useTranslations('form');
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -71,14 +74,14 @@ const AuthForm = ({ type }: { type: string }) => {
             alt='Musix logo'
           />
           <h1 className='text-6xl font-ibm-plex-serif font-bold text-indigo-700'>
-            Musix
+            {tCommon('appName')}
           </h1>
         </Link>
         <div className='flex flex-col gap-1 md:gap-3'>
           <h1 className='text-24 lg:text-26 font-semibold text-gray-900'>
             {type === 'sign-in' ? 'Sign In' : 'Sign Up'}
             <p className='text-16 font-normal text-gray-600'>
-              Please enter your details
+              {tForm('register.title')}
             </p>
           </h1>
         </div>
@@ -93,16 +96,16 @@ const AuthForm = ({ type }: { type: string }) => {
                     <CustomInput
                       control={form.control}
                       name={'firstName'}
-                      label={'First Name'}
-                      placeholder={'Enter your first name'}
+                      label={tForm('register.firstName')}
+                      placeholder={tForm('register.firstNamePlaceholder')}
                     />
                   </div>
                   <div className='flex-1'>
                     <CustomInput
                       control={form.control}
                       name={'lastName'}
-                      label={'Last Name'}
-                      placeholder={'Enter your last name'}
+                      label={tForm('register.lastName')}
+                      placeholder={tForm('register.lastNamePlaceholder')}
                     />
                   </div>
                 </div>
@@ -112,8 +115,8 @@ const AuthForm = ({ type }: { type: string }) => {
                     <CustomInput
                       control={form.control}
                       name={'dateOfBirth'}
-                      label={'Date of Birth'}
-                      placeholder={'YYYY-MM-DD'}
+                      label={tForm('register.dateOfBirth')}
+                      placeholder={tForm('register.dateOfBirthPlaceholder')}
                     />
                   </div>
                 </div>
@@ -122,14 +125,14 @@ const AuthForm = ({ type }: { type: string }) => {
             <CustomInput
               control={form.control}
               name={'email'}
-              label={'Email'}
-              placeholder={'Enter your email'}
+              label={tForm('register.email')}
+              placeholder={tForm('register.emailPlaceholder')}
             />
             <CustomInput
               control={form.control}
               name={'password'}
-              label={'Password'}
-              placeholder={'Enter your password'}
+              label={tForm('register.password')}
+              placeholder={tForm('register.passwordPlaceholder')}
             />
 
             <div className='flex flex-col gap-4'>
@@ -141,12 +144,12 @@ const AuthForm = ({ type }: { type: string }) => {
                 {isLoading ? (
                   <>
                     <Loader2 size={20} className='animate-spin' /> &nbsp;
-                    Loading...
+                    {tCommon('loading')}
                   </>
                 ) : type === 'sign-in' ? (
-                  'Sign In'
+                  tForm('register.signIn')
                 ) : (
-                  'Sign Up'
+                  tForm('register.signUp')
                 )}
               </Button>
             </div>
@@ -156,8 +159,8 @@ const AuthForm = ({ type }: { type: string }) => {
           <footer className='flex justify-center gap-1'>
             <p className='text-14 font-normal text-gray-600'>
               {type === 'sign-in'
-                ? "Don't have an account?"
-                : 'Already have an account?'}
+                ? tForm('register.noAccount')
+                : tForm('register.haveAccount')}
             </p>
             <Link
               href={type === 'sign-in' ? '/sign-up' : '/sign-in'}
