@@ -13,8 +13,11 @@ import { navLinks } from './navLinks';
 import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs/components';
 import ThemeSwitch from '../theme/ThemeSwitcher';
 import SettingsMenu from '../settings/SettingsMenu';
+import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs';
 
 const MobileNav = () => {
+    const { isAuthenticated } = useKindeBrowserClient();
+    const isLoggedIn = isAuthenticated;
   const tCommon = useTranslations('common');
   const tNavbar = useTranslations('navbar');
   const translatedNavLinks = navLinks.map((link) => ({
@@ -50,9 +53,9 @@ const MobileNav = () => {
             <SettingsMenu />
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <LogoutLink className='w-full text-left'>
+            {isLoggedIn && <LogoutLink className='w-full text-left'>
               {tCommon('logout')}
-            </LogoutLink>
+            </LogoutLink>}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
