@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction, ErrorRequestHandler } from 'express';
 
 export class ApiError extends Error {
   statusCode: number;
@@ -9,23 +9,26 @@ export class ApiError extends Error {
   }
 }
 
-export const errorHandler = (
+export const errorHandler: ErrorRequestHandler = (
   err: unknown,
   req: Request,
   res: Response,
   next: NextFunction
-) => {
+): void => {
   console.error(err);
 
   if (err instanceof ApiError) {
-    return res.status(err.statusCode).json({ error: err.message });
+    res.status(err.statusCode).json({ error: err.message });
+    return;
   }
 
   if (err instanceof Error) {
-    return res.status(500).json({ error: err.message });
+    res.status(500).json({ error: err.message });
+    return;
   }
 
-  return res.status(500).json({ error: 'Internal Server Error' });
+  res.status(500).json({ error: 'Internal Server Error' });
+  return;
 };
 
 export const BadRequest = (message: string): ApiError =>
