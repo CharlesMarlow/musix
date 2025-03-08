@@ -2,7 +2,6 @@
 
 import { Menu } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,12 +25,12 @@ const MobileNav = () => {
   }));
 
   return (
-    <div className='md:hidden bg-white'>
+    <div className='md:hidden'>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button>
-            <Menu size={24} />
-          </Button>
+            <div className='bg-transparent cursor-pointer'>
+              <Menu size={24} />
+            </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent className='w-56 rounded-lg border border-zinc-200 shadow-lg'>
           {translatedNavLinks.map((link) => (
