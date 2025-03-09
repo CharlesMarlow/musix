@@ -4,3 +4,4 @@
 src/db/database.sqlite
 src/db/*.sqlite
 src/db/*.sqlite-journal
+*.sqlite
