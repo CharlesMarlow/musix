@@ -7,7 +7,7 @@
   "navbar": {
     "links": {
       "home": "Home",
-      "friends": "friends",
+      "friends": "Friends",
       "notifications": "Notifications",
       "messages": "Messages"
     }

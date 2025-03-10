@@ -28,25 +28,24 @@ const MobileNav = () => {
     <div className='md:hidden'>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-            <div className='bg-transparent cursor-pointer'>
-              <Menu size={24} />
-            </div>
+          <div className='bg-transparent cursor-pointer'>
+            <Menu size={24} />
+          </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent className='w-56 rounded-lg border border-zinc-200 shadow-lg'>
           {translatedNavLinks.map((link) => (
             <DropdownMenuItem
               key={link.name}
-              className='hover:bg-zinc-100 transition-colors'
             >
               <a href={link.href} className='w-full block'>
                 {link.name}
               </a>
             </DropdownMenuItem>
           ))}
-          <DropdownMenuItem className='hover:bg-zinc-100'>
+          <DropdownMenuItem className='text-zinc-900'>
             <ThemeSwitch />
           </DropdownMenuItem>
-          <DropdownMenuItem className='hover:bg-zinc-100'>
+          <DropdownMenuItem className='text-zinc-900 hoverEffect'>
             <SettingsMenu />
           </DropdownMenuItem>
           <DropdownMenuItem>
