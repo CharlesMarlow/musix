@@ -14,7 +14,7 @@ import { Guitar, Sparkles, Smile, MapPin, ImageIcon } from 'lucide-react';
 const CreatePostCard = () => {
   const t = useTranslations('createPost');
   return (
-    <Card className='w-[32rem]'>
+    <Card className='w-[32rem] mt-10 sm:mt-0'>
       <CardHeader>
         <CardTitle className='text-white flex items-center justify-center gap-2'>
           {' '}
