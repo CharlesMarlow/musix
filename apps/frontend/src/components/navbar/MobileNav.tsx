@@ -34,18 +34,16 @@ const MobileNav = () => {
         </DropdownMenuTrigger>
         <DropdownMenuContent className='w-56 rounded-lg border border-zinc-200 shadow-lg'>
           {translatedNavLinks.map((link) => (
-            <DropdownMenuItem
-              key={link.name}
-            >
+            <DropdownMenuItem key={link.name}>
               <a href={link.href} className='w-full block'>
                 {link.name}
               </a>
             </DropdownMenuItem>
           ))}
-          <DropdownMenuItem className='text-zinc-900'>
+          <DropdownMenuItem asChild>
             <ThemeSwitch />
           </DropdownMenuItem>
-          <DropdownMenuItem className='text-zinc-900 hoverEffect'>
+          <DropdownMenuItem asChild>
             <SettingsMenu />
           </DropdownMenuItem>
           <DropdownMenuItem>

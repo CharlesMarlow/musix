@@ -26,7 +26,7 @@ const ThemeSwitch = () => {
     return (
       <Sun
         onClick={() => setTheme('light')}
-        className='hoverEffect cursor-pointer'
+        className='cursor-pointer hoverEffect'
         size={40}
       />
     );
@@ -36,7 +36,7 @@ const ThemeSwitch = () => {
     return (
       <Moon
         onClick={() => setTheme('dark')}
-        className='hoverEffect cursor-pointer'
+        className='cursor-pointer '
         size={40}
       />
     );
