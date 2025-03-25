@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import {
@@ -10,9 +11,12 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Guitar, Sparkles, Smile, MapPin, ImageIcon } from 'lucide-react';
+import CreatePostModal from './CreatePostModal';
 
 const CreatePostCard = () => {
+  const [openCreateModal, setOpenCreateModal] = useState(false);
   const t = useTranslations('createPost');
+
   return (
     <Card className='w-[32rem] mt-10 sm:mt-0'>
       <CardHeader>
@@ -30,7 +34,8 @@ const CreatePostCard = () => {
               <Input
                 id='create-post'
                 placeholder={t('inputPlaceholder')}
-                className='rounded-2xl'
+                className='rounded-2xl cursor-pointer hover:bg-zinc-200'
+                onClick={() => setOpenCreateModal(prev => !prev)}
               />
             </div>
             <div className='flex justify-between gap-2'>
@@ -48,6 +53,7 @@ const CreatePostCard = () => {
               </Button>
             </div>
           </div>
+          <CreatePostModal isOpen={openCreateModal} setIsOpen={setOpenCreateModal} />
         </form>
       </CardContent>
     </Card>
